@@ -24,18 +24,75 @@ Another aspect is that the data set should be formatted in such a way that more 
 
 
 ##ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
-
+```
+1.Importing the libraries
+2.Importing the dataset
+3.Taking care of missing data
+4.Encoding categorical data
+5.Normalizing the data
+6.Splitting the data into test and train
+```
 ##PROGRAM:
-/Write your code here/
+```
+Register Number: 212219220027
+Name:C.Lalitha parameswari
+import pandas as pd
+df=pd.read_csv("/content/Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 
 ##OUTPUT:
-/ Show the result/
+
+## Dataset:
+
+![image](https://user-images.githubusercontent.com/103946827/191925684-9e54fb38-5cab-4167-b40a-de85f61e131b.png)
+
+## Discribing data:
+
+![image](https://user-images.githubusercontent.com/103946827/191925837-f5c96de0-5e97-45a8-922a-7881ca5b9a7c.png)
+
+## Normalized data:
+
+![image](https://user-images.githubusercontent.com/103946827/191925966-7473c3a5-3437-4cf6-8f8a-7bd8dce4bd7a.png)
+
+
+## X_train and Y_train values:
+
+![image](https://user-images.githubusercontent.com/103946827/191926179-cb81c2dc-aba1-4f48-8ddd-1680de2498e1.png)
+
+
+## X and Y values:
+
+![image](https://user-images.githubusercontent.com/103946827/191926285-ed534f6e-666f-4d17-bd5d-b4ba8571916e.png)
+
+
+## X_test and Y_test values:
+
+![image](https://user-images.githubusercontent.com/103946827/191926429-6ee92b9f-5130-4da1-bda5-06f610a87b50.png)
+
+
+
 
 ##RESULT
-/Type your result here/
+Thus,the program has been done successfully and verified the output.
